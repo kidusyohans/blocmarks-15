@@ -1,2 +1,30 @@
-<h1>Welcome to Blocmarks</h1>
-<p>Bookmark via e-mail!</p>
+<div class="row">
+  <div class="jumbotron">
+    <div class="container">
+      <h3>Blocmark is the fastest growing social bookmark sharing site on the web!</h3>
+      <% if current_user %>
+        <%= link_to "Create a Bookmark", new_bookmark_path(), class: 'btn btn-primary' %>
+      <% else %>
+        <p>Join today for free access.</p>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="jumbotron">
+    <div class="container">
+      <h2>Newest Bookmarks</h2>
+      <div class="clear-both"></div>
+      <% if current_user %>
+        <% @six_new_bookmarks.each do |bookmark| %>
+          <div class="blocmark-preview">
+            <div class="blocmark-link"><%= link_to bookmark.title, bookmark_path(bookmark.id) %></div>
+          </div>
+        <% end %>
+      <% else%>
+        <p>Log in to view the latest bookmarks</p>
+      <% end %>
+    </div>
+  </div>
+</div>
