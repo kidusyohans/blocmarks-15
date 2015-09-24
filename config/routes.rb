@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'incoming/controller'
+
   devise_for :users
   get 'user/show'
 
