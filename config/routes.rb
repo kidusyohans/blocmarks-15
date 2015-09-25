@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'incoming/controller'
+  post :incoming, to: 'incoming#create'
 
   devise_for :users
   get 'user/show'
