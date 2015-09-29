@@ -1,0 +1,17 @@
+<%= content_tag_for :div, @bookmark do %> 
+  <h1>Bookmark</h1>
+  <div style="text-align:center">
+    <%= link_to(image_tag(@bookmark.image_source), @bookmark.url, class: "img-thumbnail", target: "_blank") %>
+    <br/>
+  </div>
+  <br/>
+  <div style="text-align:center">
+    <%= render partial: 'likes/like', locals: { bookmark: @bookmark } %>
+    <% if policy(@bookmark).edit? %>
+      <%= link_to "Edit", edit_topic_bookmark_path, class: 'btn btn-success' %>
+    <% end %>
+    <% if policy(@bookmark).destroy? %>
+      <%= link_to "Delete", topic_bookmark_path, method: :delete, class: 'btn btn-danger' %>
+    <% end %>
+  </div>
+<% end %>

@@ -1,0 +1,15 @@
+<%= content_tag_for :div, @topic do %>
+  <div align="center">
+    <h1><%= "##{@topic.title}" %></h1>
+      <% if policy(@topic).edit? %>
+        <%= link_to "Edit", edit_topic_path, class: 'btn btn-success' %>
+        <%= link_to "Delete", topic_path(@topic), method: :delete, remote: true, class: 'btn btn-danger' %>
+      <% end %>
+  </div>
+  <div class="row" align="right">
+    <%= link_to "New Bookmark", new_topic_bookmark_path(@topic), class: 'btn btn-success', style:"float: right" %>
+  </div>
+  <br/>
+  <%= render @topic.bookmarks %>
+<% end %>
+

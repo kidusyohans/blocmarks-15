@@ -1,0 +1,5 @@
+<% if @bookmark.destroyed? %>
+  $(<%= dom_id( @bookmark ) %>).fadeOut(900);
+<% else %>
+  $(<%= dom_id( @bookmark ) %>).prepend("<div class='alert alert-danger'><%= flash[:error] %></div>");
+<% end %>

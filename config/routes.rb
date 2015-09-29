@@ -1,10 +1,19 @@
 Rails.application.routes.draw do
-  post :incoming, to: 'incoming#create'
+  
+  get 'users/show'
 
   devise_for :users
-  get 'user/show'
+  resources :users, only: [:show]
 
-  get 'welcome/index'
-
+  resources :topics do
+    resources :bookmarks, except: [:index] do
+      resources :likes, only: [:create, :destroy]
+    end
+  end
+  
+  get "welcome/index"
+  post '/incoming', to: 'incoming#create'
+  
   root to: 'welcome#index'
+
 end

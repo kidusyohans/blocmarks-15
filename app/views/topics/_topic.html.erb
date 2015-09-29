@@ -1,0 +1,14 @@
+<%= content_tag_for :div, topic, class: "row" do %>
+  <div>
+    <h3>
+      <%= link_to "##{topic.title}", topic_path( topic ), class:'button-space' %>
+      <% if policy(topic).destroy? %>
+        <%= link_to "Delete", topic, method: :delete, remote: true, class: 'btn btn-xs btn-danger'%>
+      <% end %>
+    </h3>
+    <div class="row">
+      <%= render topic.bookmarks.limit(4) %>
+    </div>
+  </div> 
+
+<% end %>

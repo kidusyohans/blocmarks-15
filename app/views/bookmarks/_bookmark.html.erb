@@ -1,0 +1,12 @@
+ <%= content_tag_for :div, bookmark, class: 'col-xs-12 col-md-3 col-lg-3' do %>
+  <div style="position: relative">
+    <%= link_to( image_tag( bookmark.image_source ), topic_bookmark_path( bookmark.topic, bookmark), class: "thumbnail" ) %>
+  </div>
+  <div align="center">
+    <%= render partial: 'likes/like', locals: { bookmark: bookmark } %>
+    <% if policy(bookmark).destroy? %>
+      <%= link_to "Delete", [ bookmark.topic, bookmark ], method: :delete, remote: true, class: 'btn btn-danger' %>
+    <% end %>
+  </div>
+  <br/>
+<% end %>
