@@ -1,0 +1,9 @@
+<h1 class="text-center">My Blocmarks</h1>
+  <% @created_bookmarks.group_by(&:topic).each do | topic, bookmarks | %>
+    <%= render partial: 'users/topic', locals: { topic: topic, bookmarks: bookmarks } %>
+  <% end %>
+
+<h1 class="text-center">Liked Blocmarks</h1>
+  <% @liked_bookmarks.group_by(&:topic).each do | topic, bookmarks | %>
+    <%= render partial: 'users/topic', locals: { topic: topic, bookmarks: bookmarks } %>
+  <% end %>

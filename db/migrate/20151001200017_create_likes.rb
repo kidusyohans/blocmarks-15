@@ -2,7 +2,7 @@ class CreateLikes < ActiveRecord::Migration
   def change
     create_table :likes do |t|
       t.bookmark :references
-      t.string :user
+      t.user :references
 
       t.timestamps null: false
     end
